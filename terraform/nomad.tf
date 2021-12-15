@@ -101,3 +101,37 @@ module "nomad_client_windows_2016_amd64" {
     private_key = "${path.root}/keys/${local.random_name}.pem"
   }
 }
+
+module "nomad_client_windows_2019_amd64" {
+
+  source     = "./provision-nomad"
+  depends_on = [aws_instance.client_windows_2019_amd64]
+  count      = var.client_count_windows_2019_amd64
+
+  platform = "windows_amd64"
+  profile  = var.profile
+  role     = "client-windows"
+  index    = count.index
+
+  # The specific version of Nomad deployed will default to whichever one of
+  # nomad_sha, nomad_version, or nomad_local_binary is set, but if you want to
+  # deploy multiple versions you can use the nomad_*_client_windows
+  # variables to provide a list of builds
+  nomad_version = count.index < length(var.nomad_version_client_windows_2019_amd64) ? var.nomad_version_client_windows_2019_amd64[count.index] : var.nomad_version
+
+  nomad_sha = count.index < length(var.nomad_sha_client_windows_2019_amd64) ? var.nomad_sha_client_windows_2019_amd64[count.index] : var.nomad_sha
+
+  # if nomad_local_binary is in use, you must pass a nomad_local_binary_client_windows_2019_amd64!
+  nomad_local_binary = count.index < length(var.nomad_local_binary_client_windows_2019_amd64) ? var.nomad_local_binary_client_windows_2019_amd64[count.index] : ""
+
+  nomad_enterprise = var.nomad_enterprise
+  nomad_acls       = false
+
+  connection = {
+    type        = "ssh"
+    user        = "Administrator"
+    host        = "${aws_instance.client_windows_2019_amd64[count.index].public_ip}"
+    port        = 22
+    private_key = "${path.root}/keys/${local.random_name}.pem"
+  }
+}
