@@ -178,3 +178,9 @@ variable "nomad_local_binary_client_windows_2019_amd64" {
   type        = list(string)
   default     = []
 }
+
+variable "restrict_ingress_cidrblock" {
+  description = "Restrict ingress traffic to cluster to invoker ip address"
+  type        = bool
+  default     = true
+}

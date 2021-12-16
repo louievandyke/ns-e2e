@@ -69,7 +69,7 @@ resource "aws_instance" "client_windows_2019_amd64" {
   iam_instance_profile   = aws_iam_instance_profile.instance_profile.name
   availability_zone      = var.availability_zone
 
-  user_data = file("${path.root}/userdata/windows-2016.ps1")
+  user_data = file("${path.root}/userdata/windows-2019.ps1")
 
   # Instance tags
   tags = {
