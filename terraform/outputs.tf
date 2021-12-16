@@ -35,6 +35,10 @@ ssh into clients with:
     ssh -i keys/${local.random_name}.pem Administrator@${ip}
 %{endfor~}
 
+%{for ip in aws_instance.client_windows_2019_amd64.*.public_ip~}
+    ssh -i keys/${local.random_name}.pem Administrator@${ip}
+%{endfor~}
+
 EOM
 }
 

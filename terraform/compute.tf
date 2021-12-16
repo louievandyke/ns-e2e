@@ -60,7 +60,7 @@ resource "aws_instance" "client_windows_2016_amd64" {
 }
 
 resource "aws_instance" "client_windows_2019_amd64" {
-  ami                    = data.aws_ami.windows_2019_amd64.image_id
+  ami                    = "ami-03c4da2899fd09a67"
   #ami                    = "ami-02d0cffb9f5c2655b"	
   instance_type          = var.instance_type
   key_name               = module.keys.key_name
