@@ -1,4 +1,4 @@
 @echo off
 :x
-echo Hello! My fellow Nomad nerds!
+echo Hello! My fellow Nomads!
 goto x
