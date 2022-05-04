@@ -36,6 +36,7 @@ EOH
 
       config {
          image = "mcr.microsoft.com/windows/nanoserver:10.0.14393.1198"
+         image_pull_timeout = "10s"
          command = "cmd.exe"
          args    = ["/K", "ping -t localhost"]
         }

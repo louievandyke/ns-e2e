@@ -45,8 +45,17 @@ build {
     source      = "./windows-2019-amd64/provision.ps1"
   }
 
+  provisioner "file" {
+    destination = "/opt/IISCryptoCli.exe"
+    source      = "./windows-2019-amd64/IISCryptoCli.exe"
+  }
+
   provisioner "powershell" {
-    inline = ["/opt/provision.ps1 -nomad_version 0.12.7 -nostart"]
+    inline = ["/opt/provision.ps1 -nomad_version 1.2.3 -nostart"]
+  }
+
+  provisioner "powershell" {
+    inline = ["/opt/IISCryptoCli.exe /template default"]
   }
 
   # this restart is required for adding the "containers feature", but we can

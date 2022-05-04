@@ -43,7 +43,7 @@ build {
 
   provisioner "file" {
     destination = "/opt/provision.ps1"
-    source      = "./windows-2019-amd64/provision.ps1"
+    source      = "./windows-2016-amd64/provision.ps1"
   }
 
   provisioner "powershell" {
