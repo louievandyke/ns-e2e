@@ -37,7 +37,7 @@ variable "nomad_acls" {
 variable "profile" {
   type        = string
   description = "The name of the configuration profile (ex. 'full-cluster')"
-  default     = ""
+  default     = "dev-cluster"
 }
 
 variable "role" {

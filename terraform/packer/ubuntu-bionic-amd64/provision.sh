@@ -32,7 +32,7 @@ PLATFORM=linux_amd64
 START=1
 install_fn=
 
-NOMAD_VERSION="1.0.4"
+NOMAD_VERSION="1.2.6"
 NOMAD_PROFILE=
 NOMAD_ROLE=
 NOMAD_INDEX=
@@ -66,7 +66,7 @@ install_from_release() {
             && echo "$NOMAD_VERSION already installed" && return
     fi
 
-    RELEASE_URL="https://releases.hashicorp.com/nomad/1.0.4/nomad_1.0.4_linux_amd64.zip"
+    RELEASE_URL="https://releases.hashicorp.com/nomad/1.2.6/nomad_1.2.6_linux_amd64.zip"
     curl -sL --fail -o /tmp/nomad.zip "$RELEASE_URL"
     sudo unzip -o /tmp/nomad.zip -d "$INSTALL_DIR"
     set_ownership
