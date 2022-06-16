@@ -44,7 +44,7 @@ resource "null_resource" "provision_nomad" {
   #  destination = "C:/opt/IISCryptoCli.exe"
   #}
   provisioner "local-exec" {
-    command = "until ssh -o PasswordAuthentication=no -o KbdInteractiveAuthentication=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ${var.connection.private_key} -p ${var.connection.port} ${var.connection.user}@${var.connection.host} ${data.template_file.provision_script.rendered}; do sleep 5; done"
+    command = "until ssh -o IdentitiesOnly=yes -o PasswordAuthentication=no -o KbdInteractiveAuthentication=no -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ${var.connection.private_key} -p ${var.connection.port} ${var.connection.user}@${var.connection.host} ${data.template_file.provision_script.rendered}; do sleep 5; done"
   }
 
 }
