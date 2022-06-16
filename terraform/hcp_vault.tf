@@ -4,6 +4,18 @@
 # export VAULT_TOKEN=
 # export VAULT_ADDR=
 
+variable "hcp_vault_cluster_id" {
+  description = "The ID of the HCP Vault cluster"
+  type        = string
+  default     = "nomad-e2e-shared-hcp-vault"
+}
+
+variable "hcp_vault_namespace" {
+  description = "The namespace where the HCP Vault cluster policy works"
+  type        = string
+  default     = "admin"
+}
+
 data "hcp_vault_cluster" "e2e_shared_vault" {
   cluster_id = var.hcp_vault_cluster_id
 }

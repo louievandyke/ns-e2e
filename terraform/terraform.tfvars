@@ -5,6 +5,7 @@ client_count_ubuntu_bionic_amd64 = "3"
 client_count_windows_2016_amd64  = "0"
 client_count_windows_2019_amd64  = "0"
 profile                          = "dev-cluster"
+name                             = "ns-e2e-mikael"
 nomad_acls                       = true
 nomad_enterprise                 = true
 vault                            = true

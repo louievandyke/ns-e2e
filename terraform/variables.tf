@@ -59,6 +59,12 @@ variable "profile" {
   default     = ""
 }
 
+variable "hcp_consul_cluster_id" {
+  description = "The ID of the HCP Consul cluster"
+  type        = string
+  default     = "nomad-e2e-shared-hcp-consul"
+}
+
 # ----------------------------------------
 # The specific version of Nomad deployed will default to whichever one of
 # nomad_sha, nomad_version, or nomad_local_binary is set
