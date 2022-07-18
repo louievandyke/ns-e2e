@@ -8,17 +8,7 @@ source "amazon-ebs" "latest_windows_2019" {
   user_data_file = "windows-2019-amd64/userdata.ps1" # enables ssh
   ssh_timeout    = "10m"
   ssh_username   = "Administrator"
-
-  source_ami_filter {
-    filters = {
-      name                = "Windows_Server-2019-English-Full-Base-*"
-      root-device-type    = "ebs"
-      virtualization-type = "hvm"
-    }
-    most_recent = true
-    owners      = ["amazon"]
-  }
-
+  source_ami     = "ami-02e188c5eabfa5c8d"
   tags = {
     OS = "Windows2019"
   }
@@ -41,8 +31,23 @@ build {
   }
 
   provisioner "file" {
-    destination = "/opt/provision.ps1"
-    source      = "./windows-2019-amd64/provision.ps1"
+    destination = "/opt/provision-2019.ps1"
+    source      = "./windows-2019-amd64/provision-2019.ps1"
+  }
+
+  provisioner "file" {
+    destination = "/opt/install-nomad.ps1"
+    source      = "./windows-2019-amd64/install-nomad.ps1"
+  }
+
+  provisioner "file" {
+    destination = "/opt/install-consul.ps1"
+    source      = "./windows-2019-amd64/install-consul.ps1"
+  }
+
+  provisioner "file" {
+    destination = "/opt/install-docker.ps1"
+    source      = "./windows-2019-amd64/install-docker.ps1"
   }
 
   provisioner "file" {
@@ -51,7 +56,7 @@ build {
   }
 
   provisioner "powershell" {
-    inline = ["/opt/provision.ps1 -nomad_version 1.2.3 -nostart"]
+    inline = ["/opt/provision-2019.ps1 -nomad_version 1.2.6 -nostart"]
   }
 
   provisioner "powershell" {
@@ -67,7 +72,7 @@ build {
     inline = [
       "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SendWindowsIsReady.ps1 -Schedule",
       "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",
-      "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SysprepInstance.ps1 -NoShutdown"
+      "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SysprepInstance.ps1 -NoShutdown",
     ]
   }
 }

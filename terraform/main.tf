@@ -1,11 +1,15 @@
+terraform {
+  required_version = ">= 0.12"
+
+  required_providers {
+    aws = {
+      version = "~> 4.12.1"
+    }
+  }
+}
+
 provider "aws" {
   region = var.region
-
-  assume_role {
-    role_arn     = var.aws_assume_role_arn
-    session_name = var.aws_assume_role_session_name
-    external_id  = var.aws_assume_role_external_id
-  }
 }
 
 data "aws_caller_identity" "current" {

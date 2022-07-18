@@ -20,7 +20,7 @@ variable "instance_type" {
 
 variable "server_count" {
   description = "The number of servers to provision."
-  default     = "3"
+  default     = "1"
 }
 
 variable "client_count_ubuntu_bionic_amd64" {
@@ -56,7 +56,7 @@ variable "aws_assume_role_external_id" {
 variable "profile" {
   description = "A default Nomad/Consul/Vault configuration profile"
   type        = string
-  default     = ""
+  default     = "dev-cluster"
 }
 
 # ----------------------------------------
