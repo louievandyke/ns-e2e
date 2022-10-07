@@ -12,7 +12,7 @@ data "http" "my_public_ipv4" {
 }
 
 locals {
-  ingress_cidr = var.restrict_ingress_cidrblock ? "${chomp(data.http.my_public_ipv4.body)}/32" : "0.0.0.0/0"
+  ingress_cidr = var.restrict_ingress_cidrblock ? "${chomp(data.http.my_public_ipv4.response_body)}/32" : "0.0.0.0/0"
 }
 
 resource "aws_security_group" "primary" {
