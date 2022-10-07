@@ -1,5 +1,5 @@
 locals {
-  provision_script = var.platform == "windows_amd64" ? "C:/opt/provision.ps1" : "/opt/provision.sh"
+  provision_script = var.platform == "windows_amd64" ? "C:/opt/provision-2019.ps1" : "/opt/provision.sh"
 
   custom_path = dirname("${path.root}/config/custom/")
 

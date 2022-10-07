@@ -12,10 +12,8 @@ if (!$RunningAsAdmin) {
 
 Try {
     Write-Output "Installing containers feature."
-    $ProgressPreference = "SilentlyContinue"
-    Install-WindowsFeature -Name Containers -ErrorAction Stop
+    Install-WindowsFeature -terrName Containers -ErrorAction Stop
 
-    $ProgressPreference = "Continue"
     Write-Output "Creating user for Docker."
     net localgroup docker /add
     net localgroup docker $env:USERNAME /add
