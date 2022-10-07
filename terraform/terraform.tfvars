@@ -1,17 +1,17 @@
 region                           = "us-east-1"
 instance_type                    = "t3.medium"
-server_count                     = "3"
-client_count_ubuntu_bionic_amd64 = "3"
+server_count                     = "1"
+client_count_ubuntu_bionic_amd64 = "1"
 client_count_windows_2016_amd64  = "0"
-client_count_windows_2019_amd64  = "0"
+client_count_windows_2019_amd64  = "1"
 profile                          = "dev-cluster"
 name                             = "ns-e2e-mikael"
-nomad_acls                       = true
+nomad_acls                       = false
 nomad_enterprise                 = true
-vault                            = true
-volumes                          = false
+vault                            = false
+volumes                          = true
 
-nomad_version      = "1.2.4+ent" # default version for deployment
+nomad_version      = "1.2.6+ent" # default version for deployment
 nomad_sha          = ""       # overrides nomad_version if set
 nomad_local_binary = ""       # overrides nomad_sha and nomad_version if set
 
