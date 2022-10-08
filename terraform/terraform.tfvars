@@ -5,11 +5,11 @@ client_count_ubuntu_bionic_amd64 = "1"
 client_count_windows_2016_amd64  = "0"
 client_count_windows_2019_amd64  = "1"
 profile                          = "dev-cluster"
-name                             = "ns-e2e-mikael"
+name                             = "ns-e2e-mws-83619"
 nomad_acls                       = false
-nomad_enterprise                 = true
+nomad_enterprise                 = false
 vault                            = false
-volumes                          = true
+volumes                          = false
 
 nomad_version      = "1.2.6+ent" # default version for deployment
 nomad_sha          = ""       # overrides nomad_version if set

@@ -135,4 +135,3 @@ module "nomad_client_windows_2019_amd64" {
     private_key = "${path.root}/keys/${local.random_name}.pem"
   }
 }
-
